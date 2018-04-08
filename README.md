@@ -8,11 +8,11 @@ I've created the configuration file thanks to [this post.](https://www.reddit.co
 
 Simply:
 
-    Enter your details into the script (live example at https://govt.is/proton.html)
+* Enter your details into the script (live example at https://govt.is/proton.html)
 
-    Email the saved file to your iPhone
+* Email the saved file to your iPhone
 
-    Follow the prompts on your phone
+* Follow the prompts on your phone
 
 The script is client-side Javascript, nothing is sent to the server.
 
