@@ -5,9 +5,9 @@
 <title>IKEv2 configurator</title>
 </head>
 <body>
-<button onclick="saveFormAsTextFile()">Save</button></strong> 
+<h2>Use this tool to create an 'on demand' IKEv2 profile.</h2><br />Set an OpenVPN user/pass in Dashboard first.<br />This is not your ProtonMail password.<br />For use with ProtonVPN only.<br />
 <form name="mainForm" method="get" id="Main">
-<p><textarea id="input1" cols="20" rows="2" style="display:none;><?xml version="1.0" encoding="UTF-8"?>
+<h5><textarea id="input1" cols="20" rows="2" style="display:none;><?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -73,8 +73,13 @@
 		<dict>
 			<key>IKEv2</key>
 			<dict>
-				<key>AuthName</key><string></textarea><p>ProtonVPN username (use the OpenVPN username):<br /><textarea id="input2" cols="20" rows="2" >australian_user</textarea><p><textarea id="input3" cols="20" rows="2" style="display:none"></string><key>AuthPassword</key><string></textarea><p>ProtonVPN password:<br /><textarea id="input4" cols="20" rows="2">my-password</textarea>
-<p><textarea id="input5" cols="20" rows="2" style="display:none"></string>
+				<key>AuthName</key><string></textarea><p>ProtonVPN username:<br />
+
+			 <input name="username" id="input2" type="text" placeholder="OpenVPN username" />
+				<p><textarea id="input3" cols="20" rows="2" style="display:none"></string><key>AuthPassword</key><string></textarea>
+				<p>ProtonVPN password:<br />
+				<input name="password" id="input4" type="password" placeholder="OpenVPN password" />
+				<p><textarea id="input5" cols="20" rows="2" style="display:none"></string>
 				<key>AuthenticationMethod</key>
 				<string>None</string>
 				<key>ChildSecurityAssociationParameters</key>
@@ -124,11 +129,11 @@
 				</array>
 				<key>RemoteAddress</key>
 				<string></textarea>
-<p>Server address (can be IP address):<br /><textarea id="input6" cols="20" rows="2">au-01.protonvpn.com</textarea>
+<p>Server address (can be IP address):<br /><input name="server" id="input6" type="text" placeholder="au-02.protonvpn.com" />
 <p><textarea id="input7" cols="20" rows="2" style="display:none"></string>
 				<key>RemoteIdentifier</key>
 				<string></textarea>
-<p>Repeat above:<br /><textarea id="input8" cols="20" rows="2">au-01.protonvpn.com</textarea>
+<textarea id="input8" cols="20" rows="2" style="display:none">au-01.protonvpn.com</textarea>
 <p><textarea id="input9" cols="20" rows="2" style="display:none"></string>
 				<key>ServerCertificateIssuerCommonName</key>
 				<string>ProtonVPN Root CA</string>
@@ -181,6 +186,8 @@
 </plist>
 </textarea>
 
+<button onclick="saveFormAsTextFile()">Launch Configurator</button>
+
 </form>
 
  
@@ -217,7 +224,7 @@
 			document.getElementById("input5").value = fr.result;
 			document.getElementById("input6").value = fr.result;
 			document.getElementById("input7").value = fr.result;
-			document.getElementById("input8").value = fr.result;
+			document.getElementById("input6").value = fr.result;
 			document.getElementById("input9").value = fr.result;
 
         }
@@ -235,7 +242,7 @@ function saveFormAsTextFile()
           document.getElementById('input5').value + 
           document.getElementById('input6').value + 
           document.getElementById('input7').value + 
-          document.getElementById('input8').value + 
+          document.getElementById('input6').value + 
 		  document.getElementById('input9').value
 
          var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
